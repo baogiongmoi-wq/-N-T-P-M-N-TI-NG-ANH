@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reading - Multiple Choice Quiz</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--accent:#2563eb;--correct:#16a34a;--wrong:#dc2626}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:#0f172a; margin:0;padding:24px}
+    .container{max-width:900px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px}
+    h1{margin:0;font-size:20px}
+    .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.06);margin-top:18px}
+    .question{margin-bottom:12px}
+    .q-title{font-weight:600;margin-bottom:8px}
+    .options label{display:block;padding:8px;border-radius:8px;border:1px solid #e6edf3;margin-bottom:8px;cursor:pointer}
+    .options input{margin-right:8px}
+    button{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:600}
+    .results{margin-top:16px;padding:12px;border-radius:8px}
+    .correct{background:rgba(22,163,74,0.08);border-left:4px solid var(--correct)}
+    .wrong{background:rgba(220,38,38,0.06);border-left:4px solid var(--wrong)}
+    .explain{font-size:13px;color:#334155;margin-top:6px}
+    .small{font-size:13px;color:#475569}
+    footer{margin-top:18px;font-size:13px;color:#475569}
+    @media (max-width:600px){body{padding:12px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Reading — Multiple Choice Quiz</h1>
+      <div class="small">(Chọn đáp án rồi nhấn <strong>Check Answers</strong>)</div>
+    </header>
+
+    <div class="card" id="quiz">
+      <!-- Exercise 1 -->
+      <div class="question" data-q="1">
+        <div class="q-title">Exercise 1 — VOLUNTEER RECRUITMENT ANNOUNCEMENT</div>
+        <p class="small">We are looking for friendly and helpful volunteers to take part in our community program. All volunteers will help in organizing events and supporting local people. This is a great (1) ______ to gain experience and make new friends. To (2) ______ for this position, you must be at least 16 years old and willing to work in a team. If you are interested, please sign (3) ______ before May 15th.</p>
+        <div class="options">
+          <div><label><input type="radio" name="e1q1" value="A">A. opportunity</label></div>
+          <div><label><input type="radio" name="e1q1" value="B">B. problem</label></div>
+          <div><label><input type="radio" name="e1q1" value="C">C. schedule</label></div>
+          <div><label><input type="radio" name="e1q1" value="D">D. mistake</label></div>
+
+          <div style="height:8px"></div>
+
+          <div class="q-title">(2)</div>
+          <div><label><input type="radio" name="e1q2" value="A">A. application</label></div>
+          <div><label><input type="radio" name="e1q2" value="B">B. apply</label></div>
+          <div><label><input type="radio" name="e1q2" value="C">C. applicant</label></div>
+          <div><label><input type="radio" name="e1q2" value="D">D. applied</label></div>
+
+          <div style="height:8px"></div>
+
+          <div class="q-title">(3)</div>
+          <div><label><input type="radio" name="e1q3" value="A">A. in</label></div>
+          <div><label><input type="radio" name="e1q3" value="B">B. up</label></div>
+          <div><label><input type="radio" name="e1q3" value="C">C. over</label></div>
+          <div><label><input type="radio" name="e1q3" value="D">D. on</label></div>
+        </div>
+      </div>
+
+      <!-- Exercise 2 -->
+      <div class="question" data-q="2">
+        <div class="q-title">Exercise 2 — ACCOUNTANT RECRUITMENT ANNOUNCEMENT</div>
+        <p class="small">A well-known multinational company is currently looking for a professional accountant to join its finance team. This position offers an excellent (1) ______ for career development in an international environment. Applicants must be (2) ______ and able to work carefully with numbers and financial reports. Interested candidates are asked to send (3) ______ their CV by email before June 10th.</p>
+        <div class="options">
+          <div><label><input type="radio" name="e2q1" value="A">A. opportunity</label></div>
+          <div><label><input type="radio" name="e2q1" value="B">B. disadvantage</label></div>
+          <div><label><input type="radio" name="e2q1" value="C">C. danger</label></div>
+          <div><label><input type="radio" name="e2q1" value="D">D. failure</label></div>
+
+          <div style="height:8px"></div>
+
+          <div class="q-title">(2)</div>
+          <div><label><input type="radio" name="e2q2" value="A">A. accuracy</label></div>
+          <div><label><input type="radio" name="e2q2" value="B">B. accurately</label></div>
+          <div><label><input type="radio" name="e2q2" value="C">C. accurate</label></div>
+          <div><label><input type="radio" name="e2q2" value="D">D. accurateness</label></div>
+
+          <div style="height:8px"></div>
+
+          <div class="q-title">(3)</div>
+          <div><label><input type="radio" name="e2q3" value="A">A. in</label></div>
+          <div><label><input type="radio" name="e2q3" value="B">B. up</label></div>
+          <div><label><input type="radio" name="e2q3" value="C">C. off</label></div>
+          <div><label><input type="radio" name="e2q3" value="D">D. away</label></div>
+        </div>
+      </div>
+
+      <!-- Exercise 3 -->
+      <div class="question" data-q="3">
+        <div class="q-title">Exercise 3 — GREEN LIVING WORKSHOP</div>
+        <p class="small">Join our Green Living Workshop and learn simple ways to protect the Earth! • Discover practical tips to reduce household waste and save energy. • Learn how small daily changes can make a big (1) ______ to the environment. • Take part in hands-on activities (2) ______ you can start living greener today.</p>
+        <div class="options">
+          <div><label><input type="radio" name="e3q1" value="A">A. improvement</label></div>
+          <div><label><input type="radio" name="e3q1" value="B">B. difference</label></div>
+          <div><label><input type="radio" name="e3q1" value="C">C. mistake</label></div>
+          <div><label><input type="radio" name="e3q1" value="D">D. pollution</label></div>
+
+          <div style="height:8px"></div>
+
+          <div class="q-title">(2)</div>
+          <div><label><input type="radio" name="e3q2" value="A">A. so that</label></div>
+          <div><label><input type="radio" name="e3q2" value="B">B. although</label></div>
+          <div><label><input type="radio" name="e3q2" value="C">C. unless</label></div>
+          <div><label><input type="radio" name="e3q2" value="D">D. while</label></div>
+        </div>
+      </div>
+
+      <!-- Exercise 4 -->
+      <div class="question" data-q="4">
+        <div class="q-title">Exercise 4 — GREEN CLEAN-UP DAY</div>
+        <p class="small">Join our community Clean-Up Day and help make your neighborhood more eco-friendly! • Volunteers will collect waste and sort recyclable items for proper (1) ______. • Everyone is encouraged to bring reusable bags (2) ______ plastic ones.</p>
+        <div class="options">
+          <div><label><input type="radio" name="e4q1" value="A">A. pollution</label></div>
+          <div><label><input type="radio" name="e4q1" value="B">B. disposal</label></div>
+          <div><label><input type="radio" name="e4q1" value="C">C. damage</label></div>
+          <div><label><input type="radio" name="e4q1" value="D">D. danger</label></div>
+
+          <div style="height:8px"></div>
+
+          <div class="q-title">(2)</div>
+          <div><label><input type="radio" name="e4q2" value="A">A. instead of</label></div>
+          <div><label><input type="radio" name="e4q2" value="B">B. although</label></div>
+          <div><label><input type="radio" name="e4q2" value="C">C. because</label></div>
+          <div><label><input type="radio" name="e4q2" value="D">D. unless</label></div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+        <button id="checkBtn">Check Answers</button>
+        <button id="resetBtn" style="background:#f1f5f9;color:#0f172a">Reset</button>
+        <div id="score" class="small"></div>
+      </div>
+
+      <div id="feedback" class="results" style="display:none"></div>
+
+      <footer class="small">Đáp án đúng: Exercise1 — (1) A, (2) B, (3) B. Exercise2 — (1) A, (2) C, (3) A. Exercise3 — (1) B, (2) A. Exercise4 — (1) B, (2) A.</footer>
+    </div>
+  </div>
+
+  <script>
+    const answers = {
+      e1q1: 'A', e1q2: 'B', e1q3: 'B',
+      e2q1: 'A', e2q2: 'C', e2q3: 'A',
+      e3q1: 'B', e3q2: 'A',
+      e4q1: 'B', e4q2: 'A'
+    };
+
+    function getSelected(name){
+      const el = document.querySelector(`input[name=\"${name}\"]:checked`);
+      return el ? el.value : null;
+    }
+
+    function checkAll(){
+      const keys = Object.keys(answers);
+      let correct = 0; let total = keys.length;
+      const fb = document.getElementById('feedback'); fb.innerHTML = '';
+
+      keys.forEach(k => {
+        const user = getSelected(k);
+        const ok = user === answers[k];
+        if(ok) correct++;
+
+        // find related question block to append explanation
+        const qBlock = document.querySelector(`[name=\"${k}\"]`).closest('.options');
+        // highlight chosen option
+        // create small div with result
+        const div = document.createElement('div');
+        div.className = ok ? 'correct' : 'wrong';
+        div.style.padding = '8px';
+        div.style.marginBottom = '8px';
+        div.innerHTML = `<strong>${k.toUpperCase()}</strong> — Your answer: ${user || '<em>Không chọn</em>'}. ${ok ? 'Đúng' : 'Sai'}.`;
+        fb.appendChild(div);
+      });
+
+      document.getElementById('score').textContent = `Score: ${correct} / ${total}`;
+      fb.style.display = 'block';
+      window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+    }
+
+    document.getElementById('checkBtn').addEventListener('click', ()=>{
+      checkAll();
+    });
+    document.getElementById('resetBtn').addEventListener('click', ()=>{
+      document.querySelectorAll('input[type=radio]').forEach(i=>i.checked=false);
+      document.getElementById('feedback').style.display='none';
+      document.getElementById('score').textContent='';
+    });
+  </script>
+</body>
+</html>

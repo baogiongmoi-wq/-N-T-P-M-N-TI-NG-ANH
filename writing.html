@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Writing Transformations — Practice Test</title>
+  <style>
+    :root{--bg:#f8fafc;--card:#fff;--accent:#0ea5e9;--muted:#64748b}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:#0f172a;margin:0;padding:20px}
+    .wrap{max-width:980px;margin:0 auto}
+    header{display:flex;align-items:baseline;gap:12px}
+    h1{margin:0;font-size:20px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.06);margin-top:14px}
+    .q{margin-bottom:14px}
+    .orig{font-weight:600;margin-bottom:6px}
+    textarea{width:100%;min-height:56px;padding:10px;border-radius:8px;border:1px solid #e6eef6;font-size:14px;resize:vertical}
+    .controls{display:flex;gap:10px;align-items:center;margin-top:12px}
+    button{background:var(--accent);color:#fff;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+    button.secondary{background:#e2e8f0;color:#0f172a}
+    .result{margin-top:12px;padding:12px;border-radius:8px}
+    .correct{border-left:4px solid #16a34a;background:#f0fdf4}
+    .wrong{border-left:4px solid #ef4444;background:#fff1f2}
+    .small{font-size:13px;color:var(--muted)}
+    .answers{margin-top:12px;background:#f8fafc;padding:10px;border-radius:8px;border:1px solid #e6eef6}
+    footer{margin-top:12px;font-size:13px;color:var(--muted)}
+    @media (max-width:600px){body{padding:12px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Writing Transformations — Practice Test</h1>
+      <div class="small">(Viết lại câu theo gợi ý, sau đó nhấn <strong>Check</strong>)</div>
+    </header>
+
+    <div class="card" id="test">
+      <!-- Generate 22 questions -->
+      <div id="questions"></div>
+
+      <div class="controls">
+        <button id="checkBtn">Check Answers</button>
+        <button id="showBtn" class="secondary">Show Model Answers</button>
+        <button id="resetBtn" class="secondary">Reset</button>
+        <div id="score" class="small"></div>
+      </div>
+
+      <div id="feedback"></div>
+
+      <div id="modelAnswers" class="answers" style="display:none"></div>
+
+      <footer class="small">Mẹo: Hệ thống so sánh không phân biệt hoa thường và bỏ dấu câu; vẫn chấp nhận các biến thể hợp lý nhưng nếu khác quá sẽ hiện là Sai. Muốn thay đổi kiểm tra cho mềm dẻo hơn thì yêu cầu mình nhé.</footer>
+    </div>
+  </div>
+
+  <script>
+    const data = [
+      {orig: "She started learning English with an online teacher five years ago. (been)", ans: "She has been learning English with an online teacher for five years."},
+      {orig: "They moved to this busy city in 2018 because their parents found new jobs here. (have)", ans: "They have lived in this busy city since their parents found new jobs here in 2018."},
+      {orig: "He began to look for a job when he was a student. (been)", ans: "He has been looking for a job since he was a student."},
+      {orig: "I last saw my best friend last summer when we attended the same English course. (haven’t)", ans: "I haven't seen my best friend since last summer when we attended the same English course."},
+      {orig: "She has not visited her grandparents for two years. (The last time)", ans: "The last time she visited her grandparents was two years ago."},
+      {orig: "The last time I spoke to my old teacher was in 2021. (have)", ans: "I have not spoken to my old teacher since 2021."},
+      {orig: "She forgot to set the alarm clock. This made her arrive at school late this morning. (which)", ans: "She forgot to set the alarm clock, which made her arrive at school late this morning."},
+      {orig: "They didn’t prepare carefully for the presentation. That caused the result to be unsuccessful. (which)", ans: "They didn't prepare carefully for the presentation, which caused the result to be unsuccessful."},
+      {orig: "She passed the final exam with flying colours. This made her parents extremely proud. (which)", ans: "She passed the final exam with flying colours, which made her parents extremely proud."},
+      {orig: "When people use more renewable energy, the environment becomes cleaner. (double comparative)", ans: "The more renewable energy people use, the cleaner the environment becomes."},
+      {orig: "As people become more aware of climate change, they try harder to reduce waste. (double comparative)", ans: "The more aware people become of climate change, the more they try to reduce waste."},
+      {orig: "When we plant more trees, the air quality improves. (double comparative)", ans: "The more trees we plant, the better the air quality becomes."},
+      {orig: "Urban areas are becoming more crowded every year. (double comparative)", ans: "The more time passes, the more crowded urban areas become."},
+      {orig: "The effects of climate change are getting more serious. (double comparative)", ans: "The more serious the effects of climate change become, the more severe their consequences will be."},
+      {orig: "The cost of living in big cities is increasing at a fast rate. (double comparative)", ans: "The faster the cost of living in big cities rises, the harder it becomes for people to afford living there."},
+      {orig: "We want to protect the environment. We still use too much plastic. (but)", ans: "We want to protect the environment, but we still use too much plastic."},
+      {orig: "She turned off all the lights before leaving. She wanted to save energy. (so)", ans: "She turned off all the lights before leaving so as to save energy."},
+      {orig: "He applied for the job. He submitted his CV online. (and)", ans: "He applied for the job and submitted his CV online."},
+      {orig: "People should use public transport. It helps reduce air pollution. (because)", ans: "People should use public transport because it helps reduce air pollution."},
+      {orig: "Different cultures have different traditions. People can still live together peacefully. (although)", ans: "Although different cultures have different traditions, people can still live together peacefully."},
+      {orig: "You will get a promotion. You work harder and improve your skills. (if)", ans: "You will get a promotion if you work harder and improve your skills."},
+      {orig: "People understand other cultures. They become more open-minded. (when)", ans: "When people understand other cultures, they become more open-minded."}
+    ];
+
+    const qContainer = document.getElementById('questions');
+    data.forEach((d,i)=>{
+      const idx = i+1;
+      const div = document.createElement('div'); div.className='q';
+      div.innerHTML = `<div class="orig">${idx}. ${d.orig}</div><textarea id="a${idx}" placeholder="Viết lại câu..."></textarea>`;
+      qContainer.appendChild(div);
+    });
+
+    function normalize(s){
+      return s.toLowerCase().replace(/[\u0300-\u036f]/g, '') // diacritics (best-effort)
+               .replace(/[.,!?;:\"'()]/g,'') // remove punctuation
+               .replace(/\s+/g,' ').trim();
+    }
+
+    function checkAnswers(){
+      const fb = document.getElementById('feedback'); fb.innerHTML='';
+      let correct=0; data.forEach((d,i)=>{
+        const idx = i+1; const user = document.getElementById('a'+idx).value || '';
+        const userN = normalize(user);
+        const modelN = normalize(d.ans);
+        const ok = userN === modelN;
+        const div = document.createElement('div');
+        div.className = 'result ' + (ok? 'correct':'wrong');
+        div.innerHTML = `<strong>Question ${idx}:</strong> ${ok? 'Correct':'Incorrect'}<div class="small">Your answer: ${user? user.replace(/</g,'&lt;'):'(blank)'}</div>${ok? '': '<div class="small" style="margin-top:6px"><strong>Model:</strong> '+d.ans+'</div>'}`;
+        fb.appendChild(div);
+        if(ok) correct++;
+      });
+      document.getElementById('score').textContent = `Score: ${correct} / ${data.length}`;
+      fb.scrollIntoView({behavior:'smooth'});
+    }
+
+    document.getElementById('checkBtn').addEventListener('click', checkAnswers);
+    document.getElementById('resetBtn').addEventListener('click', ()=>{
+      data.forEach((_,i)=>document.getElementById('a'+(i+1)).value='');
+      document.getElementById('feedback').innerHTML=''; document.getElementById('score').textContent='';
+    });
+    document.getElementById('showBtn').addEventListener('click', ()=>{
+      const ma = document.getElementById('modelAnswers');
+      if(ma.style.display==='none'){
+        ma.style.display='block'; ma.innerHTML = '<strong>Model answers</strong><ol>'+data.map(d=>'<li>'+d.ans+'</li>').join('')+'</ol>';
+        document.getElementById('showBtn').textContent='Hide Model Answers';
+      } else{ ma.style.display='none'; document.getElementById('showBtn').textContent='Show Model Answers'; }
+    });
+  </script>
+</body>
+</html>
