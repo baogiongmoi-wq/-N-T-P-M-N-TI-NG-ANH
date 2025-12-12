@@ -1,5 +1,4 @@
 <!-- Website: BÀI TẬP ÔN TẬP KIỂM TRA HỌC KỲ 1 - NĂM HỌC: 2025-2026 MÔN TIẾNG ANH -->
-<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -21,14 +20,14 @@
   </header>
 
   <main>
-    <p>Chọn một trong ba bài kiểm tra dưới đây để làm:</p>
+  
     <div class="links" style="display:flex; gap:16px; justify-content:space-between;">
       <a class="card" style="flex:1; text-align:center;" href="vocabulary.html">VOCABULARY AND GRAMMAR</a>
       <a class="card" style="flex:1; text-align:center;" href="reading.html">READING</a>
       <a class="card" style="flex:1; text-align:center;" href="writing.html">WRITING</a>
     </div>
 
-    <p style="margin-top:20px">Muốn mình bổ sung chấm điểm tự động, giới hạn thời gian, hoặc giao diện khác không? Nói mình biết tính năng bạn muốn.</p>
+    
   </main>
 </body>
 </html>
