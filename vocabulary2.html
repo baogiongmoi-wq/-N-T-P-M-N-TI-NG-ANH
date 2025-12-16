@@ -119,19 +119,33 @@
     q31:'B',q32:'D',q33:'A',q34:'C',q35:'C',q36:'D',q37:'B',q38:'B',q39:'C',q40:'A',
     q41:'C',q42:'D',q43:'C',q44:'B',q45:'A',q46:'B',q47:'C',q48:'A',q49:'C',q50:'B'
   };
-
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
   // render questions
   const container = document.getElementById('questions');
-  questionsData.forEach(item=>{
-    const div = document.createElement('div');
-    div.className='question';
-    div.id = 'q'+item.id;
-    div.innerHTML = `
-      <div class="qnum">${item.id}. ${item.q}</div>
-      <div class="options">
-        ${Object.keys(item.opts).map(k=>`<label class="opt"><input type="radio" name="q${item.id}" value="${k}">${k}. ${item.opts[k]}</label>`).join('')}
-      </div>
-    `;
+shuffleArray(questionsData);
+  questionsData.forEach((item, index) => {
+  const qNumber = index + 1;
+
+  const div = document.createElement('div');
+  div.className = 'question';
+  div.id = 'q' + qNumber;
+
+  div.innerHTML = `
+    <div class="qnum">${qNumber}. ${item.q}</div>
+    <div class="options">
+      ${Object.keys(item.opts).map(k=>`
+        <label class="opt">
+          <input type="radio" name="q${qNumber}" value="${k}">
+          ${k}. ${item.opts[k]}
+        </label>
+      `).join('')}
+    </div>
+  `;
     container.appendChild(div);
   });
 
