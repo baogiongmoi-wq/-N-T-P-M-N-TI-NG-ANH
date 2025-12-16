@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vocabulary & Grammar Test - 50 Questions</title>
+  <style>
+    :root{--bg:#f6f8fb;--card:#fff;--accent:#2b6cb0;--correct:#28a745;--wrong:#dc3545}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:#111}
+    header{background:linear-gradient(90deg,#1f6fb8,#2b6cb0);color:white;padding:18px 24px}
+    .container{max-width:980px;margin:18px auto;padding:18px}
+    .card{background:var(--card);border-radius:10px;box-shadow:0 6px 20px rgba(20,20,40,0.06);padding:18px}
+    h1{margin:0 0 6px;font-size:20px}
+    p.lead{margin:6px 0 16px;color:#334155}
+    .question{padding:12px;border-radius:8px;margin-bottom:10px;border:1px solid #eef2f7}
+    .qnum{font-weight:600;margin-bottom:6px}
+    .options{display:flex;gap:12px;flex-wrap:wrap}
+    label.opt{flex:1;min-width:150px;background:#f8fafc;padding:10px;border-radius:8px;border:1px solid #e6eef8;cursor:pointer}
+    input[type=radio]{margin-right:8px}
+    .controls{display:flex;gap:10px;align-items:center;margin-top:14px}
+    button{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+    button.secondary{background:#6b7280}
+    .result{margin-top:14px;padding:12px;border-radius:8px}
+    .correct{background:rgba(40,167,69,0.08);border:1px solid rgba(40,167,69,0.18);color:var(--correct)}
+    .wrong{background:rgba(220,53,69,0.06);border:1px solid rgba(220,53,69,0.12);color:var(--wrong)}
+    .small{font-size:13px;color:#475569}
+    footer{max-width:980px;margin:20px auto;text-align:center;color:#64748b}
+    @media (max-width:700px){.options{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Vocabulary & Grammar - 50-question Test</h1>
+      <div class="small">Điền chọn A, B, C hoặc D cho mỗi câu. Nhấn "Nộp bài" để chấm điểm và xem đáp án.</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <form id="quizForm">
+        <div id="questions"></div>
+
+        <div class="controls">
+          <button type="button" id="submitBtn">Nộp bài</button>
+          <button type="button" id="resetBtn" class="secondary">Làm lại</button>
+          <div id="score" style="margin-left:auto"></div>
+        </div>
+      </form>
+
+      <div id="feedback" style="margin-top:12px"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="small">Đề gốc: Bài trắc nghiệm 50 câu (Vocabulary & Grammar)</div>
+  </footer>
+
+  <script>
+  // --- QUESTIONS DATA ---
+  const questionsData = [
+    {id:1, q:"The city’s ______ needs upgrading to meet the demands from its citizens.", opts:{A:"leisure",B:"convenience",C:"infrastructure",D:"unemployment"}},
+    {id:2, q:"The urban ______ can threaten the unique charm of the countryside.", opts:{A:"unemployment",B:"housing",C:"leisure",D:"sprawl"}},
+    {id:3, q:"Traffic in the ______ is a nightmare for commuters.", opts:{A:"resident",B:"rush hour",C:"urbanisation",D:"concern"}},
+    {id:4, q:"Many fresh graduates are struggling to ______ a nine-to-five job.", opts:{A:"expand",B:"seek",C:"afford",D:"modernise"}},
+    {id:5, q:"The municipal authority is implementing new policies to address affordable ______ shortages.", opts:{A:"housing",B:"resident",C:"concern",D:"infrastructure"}},
+    {id:6, q:"She had to work on a ______ last night, so she is very tired this morning.", opts:{A:"the roof",B:"the table",C:"the bed",D:"night shift"}},
+    {id:7, q:"Qualifications and ______ are two most important factors that help you get a good job.", opts:{A:"politeness",B:"experience",C:"attention",D:"impression"}},
+    {id:8, q:"Not all teenagers are well ______ for their future job when they are at high school.", opts:{A:"interested",B:"satisfied",C:"concerned",D:"prepared"}},
+    {id:9, q:"Doctors have to assume ______ for human life.", opts:{A:"responsible",B:"responsibly",C:"responsibility",D:"responses"}},
+    {id:10, q:"With so much ______, I’m lucky to be in work.", opts:{A:"employees",B:"employers",C:"employment",D:"unemployment"}},
+    {id:11, q:"Rapid ______ has led to overcrowding and pressure on public services in many big cities.", opts:{A:"urban",B:"urbanise",C:"urbanisation",D:"urbanised"}},
+    {id:12, q:"She is applying for a ______ position in a multinational company.", opts:{A:"profession",B:"professional",C:"professionally",D:"professionalism"}},
+    {id:13, q:"His poor ______ has caused several problems at work.", opts:{A:"perform",B:"performer",C:"performance",D:"performing"}},
+    {id:14, q:"In order to apply for a credit card, Tom first has to ______ a four-page form at the bank.", opts:{A:"catch on",B:"come up with",C:"fill in",D:"hand out"}},
+    {id:15, q:"We had to ______ their invitation to lunch as we had a previous engagement.", opts:{A:"turn down",B:"turn up",C:"get up",D:"get down"}},
+    {id:16, q:"After the interview, the company decided to ______ three new employees for the marketing department.", opts:{A:"give up",B:"take on",C:"look after",D:"carry out"}},
+    {id:17, q:"The number of job vacancies has ______ significantly since last year.", opts:{A:"gone down",B:"gone up",C:"gone out",D:"gone off"}},
+    {id:18, q:"He is planning to ______ a scholarship to study abroad next year.", opts:{A:"apply in",B:"apply on",C:"apply to",D:"apply for"}},
+    {id:19, q:"In a multicultural society, people should ______ differences in customs and traditions.", opts:{A:"look down on",B:"put up with",C:"respect for",D:"get over"}},
+    {id:20, q:"This is the most interesting article about urbanisation that she ______.", opts:{A:"ever reads",B:"has ever read",C:"ever read",D:"had ever read"}},
+    {id:21, q:"This is the second time my father ______ Ho Chi Minh’s Mausoleum.", opts:{A:"visited",B:"visits",C:"has visited",D:"had visited"}},
+    {id:22, q:"She has _____ designing a new website for the company.", opts:{A:"just finished",B:"just finishes",C:"finished just",D:"has just finish"}},
+    {id:23, q:"I _____ programming languages since I was at secondary school.", opts:{A:"learned",B:"learn",C:"have learning",D:"have learned"}},
+    {id:24, q:"He _____ his computer to the latest operating system lately.", opts:{A:"upgrades",B:"did upgrade",C:"has upgraded",D:"is upgrading"}},
+    {id:25, q:"John _____ his favourite book when his sister came to visit him.", opts:{A:"had read",B:"read",C:"will read",D:"was reading"}},
+    {id:26, q:"I fell asleep while I _____ my homework last night.", opts:{A:"was doing",B:"have done",C:"did",D:"is doing"}},
+    {id:27, q:"We _____ a documentary about war heroes at 8.30 p.m. last Friday.", opts:{A:"watched",B:"have watched",C:"were watching",D:"are watching"}},
+    {id:28, q:"They were taking selfies while the tour guide _____ the itinerary.", opts:{A:"explains",B:"is explaining",C:"has explained",D:"was explaining"}},
+    {id:29, q:"When he went home, his mother _____ dinner, so he took off his coat to help her.", opts:{A:"is cooking",B:"was cooking",C:"cooked",D:"cooks"}},
+    {id:30, q:"The well is getting _____ polluted, forcing villagers to seek alternative clean water sources.", opts:{A:"much and more",B:"much and much",C:"most and most",D:"more and more"}},
+    {id:31, q:"Thanks to the progress of science and technology, our lives have become _____.", opts:{A:"more and more good",B:"better and better",C:"the more and more good",D:"well and well"}},
+    {id:32, q:"Buildings in big cities are becoming _____.", opts:{A:"taller",B:"more tall",C:"the taller",D:"taller and taller"}},
+    {id:33, q:"Property prices are getting _____ expensive.", opts:{A:"more and more",B:"more and most",C:"most and more",D:"most and most"}},
+    {id:34, q:"It gets _____ when the winter is coming.", opts:{A:"cold and cold",B:"the coldest and coldest",C:"colder and colder",D:"more and more cold"}},
+    {id:35, q:"Urbanization can bring social health and benefit; _____, it also has its drawbacks.", opts:{A:"by the way",B:"furthermore",C:"however",D:"moreover"}},
+    {id:36, q:"_____ you are proficient in Japanese, you will stand a better chance of getting the job.", opts:{A:"However",B:"Although",C:"While",D:"Because"}},
+    {id:37, q:"My brother pursued higher education _____ he could get a better job.", opts:{A:"not only",B:"so that",C:"either",D:"even though"}},
+    {id:38, q:"She was very tired, _____ she still finished her report on time.", opts:{A:"or",B:"but",C:"because",D:"so"}},
+    {id:39, q:"You can stay here, _____ you can come with us to the cinema.", opts:{A:"although",B:"because",C:"or",D:"and"}},
+    {id:40, q:"Good teamwork can improve work _____.", opts:{A:"performance",B:"perform",C:"performer",D:"performing"}},
+    {id:41, q:"Students are encouraged to show _____ for other cultures.", opts:{A:"polite",B:"politeness",C:"respect",D:"respecting"}},
+    {id:42, q:"Rapid urbanisation has caused a shortage of _____.", opts:{A:"apartments",B:"buildings",C:"houses",D:"housing"}},
+    {id:43, q:"Traffic _____ is a serious problem in big cities.", opts:{A:"crowd",B:"traffic jam",C:"congestion",D:"block"}},
+    {id:44, q:"Many people now prefer using _____ energy such as wind and solar power.", opts:{A:"recreated",B:"renewable",C:"repeated",D:"reused"}},
+    {id:45, q:"He finally got his dream job after a long job _____.", opts:{A:"hunting",B:"searching",C:"finding",D:"looking"}},
+    {id:46, q:"Living in a multicultural society helps people become more ______.", opts:{A:"narrow-minded",B:"open-minded",C:"close-minded",D:"simple-minded"}},
+    {id:47, q:"We should take ______ for our actions and their consequences.", opts:{A:"duties",B:"charge",C:"responsibility",D:"control"}},
+    {id:48, q:"He is planning to start his own ______ after graduation.", opts:{A:"business",B:"work",C:"career",D:"job"}},
+    {id:49, q:"Many graduates are under ______ to find a good job quickly.", opts:{A:"stress",B:"tension",C:"pressure",D:"effort"}},
+    {id:50, q:"The campaign aims to raise public ______ of environmental problems.", opts:{A:"attention",B:"awareness",C:"knowledge",D:"understanding"}}
+  ];
+
+  // --- ANSWER KEY (from provided answer list) ---
+  const answers = {
+    q1:'C',q2:'D',q3:'B',q4:'B',q5:'A',q6:'D',q7:'B',q8:'D',q9:'C',q10:'D',
+    q11:'C',q12:'B',q13:'C',q14:'C',q15:'A',q16:'B',q17:'A',q18:'D',q19:'B',q20:'B',
+    q21:'C',q22:'A',q23:'D',q24:'C',q25:'D',q26:'A',q27:'C',q28:'D',q29:'B',q30:'D',
+    q31:'B',q32:'D',q33:'A',q34:'C',q35:'C',q36:'D',q37:'B',q38:'B',q39:'C',q40:'A',
+    q41:'C',q42:'D',q43:'C',q44:'B',q45:'A',q46:'B',q47:'C',q48:'A',q49:'C',q50:'B'
+  };
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  // render questions
+  const container = document.getElementById('questions');
+shuffleArray(questionsData);
+  questionsData.forEach((item, index) => {
+  const qNumber = index + 1;
+
+  const div = document.createElement('div');
+  div.className = 'question';
+  div.id = 'q' + qNumber;
+
+  div.innerHTML = `
+    <div class="qnum">${qNumber}. ${item.q}</div>
+    <div class="options">
+      ${Object.keys(item.opts).map(k=>`
+        <label class="opt">
+          <input type="radio" name="q${qNumber}" value="${k}">
+          ${k}. ${item.opts[k]}
+        </label>
+      `).join('')}
+    </div>
+  `;
+    container.appendChild(div);
+  });
+
+  // grading logic
+  const submitBtn = document.getElementById('submitBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const scoreDiv = document.getElementById('score');
+  const feedbackDiv = document.getElementById('feedback');
+
+  submitBtn.addEventListener('click', ()=>{
+    let total = questionsData.length;
+    let correctCount = 0;
+    let unanswered = 0;
+    feedbackDiv.innerHTML='';
+
+    for(let i=1;i<=total;i++){
+      const name = 'q'+i;
+      const selected = document.querySelector(`input[name="${name}"]:checked`);
+      const qDiv = document.getElementById(name);
+      qDiv.classList.remove('correct','wrong');
+      // clear previous note
+      const prevNote = qDiv.querySelector('.note'); if(prevNote) prevNote.remove();
+
+      if(!selected){
+        unanswered++;
+        // mark as unanswered lightly
+        const note = document.createElement('div'); note.className='small'; note.textContent='(Chưa trả lời)'; qDiv.appendChild(note);
+        continue;
+      }
+      const val = selected.value;
+      const key = answers[name];
+      const note = document.createElement('div'); note.className='note small';
+      if(val === key){
+        correctCount++;
+        qDiv.classList.add('correct');
+        note.textContent = `Đúng — đáp án: ${key}`;
+      } else {
+        qDiv.classList.add('wrong');
+        note.textContent = `Sai — đáp án đúng: ${key} (Bạn chọn: ${val})`;
+      }
+      qDiv.appendChild(note);
+    }
+
+    const percent = Math.round((correctCount/total)*100);
+    scoreDiv.innerHTML = `<strong>Kết quả: ${correctCount}/${total} (${percent}%)</strong>`;
+
+    // show summary feedback
+    const summary = document.createElement('div');
+    summary.className = 'result ' + (percent>=60? 'correct':'wrong');
+    summary.innerHTML = `<strong>${percent>=60? 'Good job!':'Keep practicing.'}</strong>
+      <div class="small">Bạn trả lời đúng ${correctCount} câu, sai hoặc chưa trả lời ${total-correctCount} câu.</div>`;
+
+    feedbackDiv.appendChild(summary);
+
+    // disable submit to prevent multiple submissions
+    submitBtn.disabled = true;
+  });
+
+  resetBtn.addEventListener('click', ()=>{
+    document.getElementById('quizForm').reset();
+    // clear highlights/notes
+    for(let i=1;i<=questionsData.length;i++){
+      const qDiv = document.getElementById('q'+i);
+      qDiv.classList.remove('correct','wrong');
+      const note = qDiv.querySelector('.note'); if(note) note.remove();
+      const un = qDiv.querySelector('.small'); if(un) un.remove();
+    }
+    scoreDiv.innerHTML='';
+    feedbackDiv.innerHTML='';
+    submitBtn.disabled = false;
+  });
+  </script>
+</body>
+</html>
