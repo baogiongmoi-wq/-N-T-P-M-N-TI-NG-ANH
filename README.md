@@ -22,7 +22,7 @@
   <main>
   
     <div class="links" style="display:flex; gap:16px; justify-content:space-between;">
-      <a class="card" style="flex:1; text-align:center;" href="vocabulary.html">VOCABULARY AND GRAMMAR</a>
+      <a class="card" style="flex:1; text-align:center;" href="vocabulary2.html">VOCABULARY AND GRAMMAR</a>
       <a class="card" style="flex:1; text-align:center;" href="reading.html">READING</a>
       <a class="card" style="flex:1; text-align:center;" href="writing.html">WRITING</a>
     </div>
