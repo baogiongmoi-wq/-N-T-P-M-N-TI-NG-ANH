@@ -608,9 +608,95 @@
       D: "Tiết kiệm và an toàn"
     },
     answer: "D"
-  }
-];
-
+  },
+  {
+    id: 51,
+    q: "Dữ liệu lớn có đặc điểm gì quan trọng?",
+    opts: {
+      A: "Có thể được xử lý dễ dàng và nhanh chóng.",
+      B: "Không có kích thước lớn và dễ phân tích.",
+      C: "Có sự đa dạng về các loại dữ liệu và thường xuyên được cập nhật.",
+      D: "Không thay đổi theo thời gian."
+    },
+    answer: "C"
+  },
+  {
+    id: 52,
+    q: "Khi ứng dụng Khoa học dữ liệu để phân tích hành vi của khách hàng, bạn sẽ sử dụng kỹ thuật nào để phân loại khách hàng thành các nhóm?",
+    opts: {
+      A: "Học có giám sát",
+      B: "Học không giám sát",
+      C: "Học sâu",
+      D: "Học máy hồi quy"
+    },
+    answer: "B"
+  },
+  {
+    id: 53,
+    q: "Máy tính đóng vai trò quan trọng trong tất cả các giai đoạn của quy trình khoa học dữ liệu như thu thập, xử lí, phân tích và trực quan hóa dữ liệu. Phương án nào sau đây không phải là vai trò của máy tính trong khoa học dữ liệu?",
+    opts: {
+      A: "Hạn chế khả năng lưu trữ dữ liệu lớn",
+      B: "Phân tích và khai phá dữ liệu phức tạp",
+      C: "Tạo ra các biểu diễn trực quan của dữ liệu",
+      D: "Tự động hoá các nhiệm vụ lặp lại trong xử lí dữ liệu"
+    },
+    answer: "A"
+  },
+  {
+    id: 54,
+    q: "Dự án Hệ gene người đã ứng dụng sức mạnh máy tính để giải mã chuỗi gene phức tạp của con người, giúp hoàn thành khối lượng công việc khổng lồ trong thời gian ngắn. Câu trả lời nào sau đây là kết quả trực tiếp của việc sử dụng máy tính trong Dự án Hệ gene người?",
+    opts: {
+      A: "Tạo ra các mẫu sinh học nhân tạo",
+      B: "Hoàn thành bản đồ gene trong thời gian ngắn hơn",
+      C: "Giảm độ dài hệ gene người",
+      D: "Tạo ra thiết bị xét nghiệm cầm tay"
+    },
+    answer: "B"
+  },
+  {
+    id: 55,
+    q: "Trong khoa học dữ liệu, trực quan hóa dữ liệu giúp trình bày kết quả phân tích một cách dễ hiểu và sinh động. Phương án nào sau đây giải thích đúng nhất vai trò của trực quan hoá dữ liệu?",
+    opts: {
+      A: "Chuyển đổi dữ liệu thành file văn bản để lưu trữ",
+      B: "Giúp giảm độ phức tạp của mô hình dữ liệu bằng cách loại bỏ thuộc tính",
+      C: "Hỗ trợ khám phá, trình bày kết quả và giao tiếp hiệu quả với người dùng",
+      D: "Là bước cuối cùng để mã hóa dữ liệu trước khi xử lí"
+    },
+    answer: "C"
+  },
+  {
+    id: 56,
+    q: "Khi phân tích dữ liệu gene, các máy tính sử dụng khả năng xử lí song song để tăng tốc độ tính toán. Cách nào sau đây giúp quá trình phân tích dữ liệu gene diễn ra nhanh hơn nhờ máy tính?",
+    opts: {
+      A: "Sử dụng phần mềm vẽ biểu đồ thủ công",
+      B: "Xử lí dữ liệu theo từng đoạn, một cách tuần tự",
+      C: "Tăng bộ nhớ RAM mà không cần thêm lõi xử lí",
+      D: "Chia nhỏ và xử lí đồng thời nhiều phần của dữ liệu bằng tính toán song song"
+    },
+    answer: "D"
+  },
+  {
+    id: 57,
+    q: "Bạn được giao một nhiệm vụ phân tích dữ liệu lớn với yêu cầu tự động hoá, giảm lỗi thao tác tay, và cần tốc độ xử lí nhanh. Cách nào sau đây là phù hợp nhất để thực hiện nhiệm vụ này?",
+    opts: {
+      A: "Sử dụng phần mềm bảng tính và nhập liệu thủ công",
+      B: "Áp dụng thuật toán học máy trên nền tảng điện toán đám mây có hỗ trợ tự động hoá",
+      C: "Sử dụng điện thoại để xử lí dữ liệu qua ứng dụng di động",
+      D: "Chia sẻ dữ liệu cho từng người trong nhóm để xử lí riêng"
+    },
+    answer: "B"
+  },
+  {
+    id: 58,
+    q: "Một nhóm nghiên cứu quốc tế cùng hợp tác giải mã hệ gene người, trong đó dữ liệu được thu thập ở nhiều nơi và xử lí tập trung. Phương án nào sau đây thể hiện đúng nhất lợi ích của việc dùng máy tính trong bối cảnh này?",
+    opts: {
+      A: "Cho phép người dùng sao chép dữ liệu thủ công giữa các quốc gia",
+      B: "Tăng thời gian phản hồi khi có nhiều dữ liệu cùng lúc",
+      C: "Tích hợp dữ liệu từ các nhóm nghiên cứu để phân tích thống nhất và hiệu quả hơn",
+      D: "Giảm sự hợp tác khoa học do phụ thuộc vào máy tính"
+    },
+    answer: "C"
+  }];
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
